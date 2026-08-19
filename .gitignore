@@ -42,3 +42,9 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/prisma
+
+# agent tooling
+AGENTS.md
+CLAUDE.md
+/.agents
+/.claude
