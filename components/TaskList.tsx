@@ -58,6 +58,7 @@ export function TaskList({
       <div
         style={{
           display: "flex",
+          flexShrink: 0,
           alignItems: "center",
           justifyContent: "space-between",
           gap: 24,
@@ -68,7 +69,7 @@ export function TaskList({
         <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 28, margin: 0, letterSpacing: "-0.02em" }}>
           My Tasks
         </h1>
-        <div style={{ position: "relative", width: 280 }}>
+        <div style={{ position: "relative", width: "100%", maxWidth: 280, flex: "1 1 200px" }}>
           <span style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--placeholder)", fontSize: 14 }}>
             ⌕
           </span>
@@ -84,6 +85,8 @@ export function TaskList({
       <div
         style={{
           display: "flex",
+          flexShrink: 0,
+          flexWrap: "wrap",
           gap: 6,
           background: "var(--incomplete-bg)",
           padding: 5,
@@ -118,7 +121,7 @@ export function TaskList({
         })}
       </div>
 
-      <div ref={listRef}>
+      <div ref={listRef} className="scroll-area">
         {loading ? (
           <EmptyState title="Loading tasks…" />
         ) : tasks.length === 0 ? (

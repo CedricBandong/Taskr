@@ -64,6 +64,7 @@ export function TaskRow({ task, onToggle, onEdit, onDelete, onOpen }: TaskRowPro
         borderRadius: "var(--radius-lg)",
         padding: "16px 18px",
         display: "flex",
+        flexWrap: "wrap",
         alignItems: "flex-start",
         gap: 14,
         marginBottom: 10,
@@ -72,7 +73,7 @@ export function TaskRow({ task, onToggle, onEdit, onDelete, onOpen }: TaskRowPro
     >
       <Checkbox checked={task.completed} onCheckedChange={() => onToggle(task.id)} style={{ marginTop: 2 }} />
 
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div style={{ flex: "1 1 200px", minWidth: 0 }}>
         <div
           style={{
             fontFamily: "var(--font-display)",
@@ -91,11 +92,11 @@ export function TaskRow({ task, onToggle, onEdit, onDelete, onOpen }: TaskRowPro
         )}
       </div>
 
-      <div style={{ fontSize: 12, color: "var(--faint-foreground)", whiteSpace: "nowrap", marginTop: 3 }}>
-        {formatShortDate(task.createdAt)}
-      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 10, marginLeft: "auto" }}>
+        <div style={{ fontSize: 12, color: "var(--faint-foreground)", whiteSpace: "nowrap" }}>
+          {formatShortDate(task.createdAt)}
+        </div>
 
-      <div style={{ display: "flex", gap: 6, marginTop: 2 }}>
         <span
           style={{
             background: badge.bg,
@@ -110,23 +111,23 @@ export function TaskRow({ task, onToggle, onEdit, onDelete, onOpen }: TaskRowPro
         >
           {badge.label}
         </span>
-      </div>
 
-      <div style={{ display: "flex", gap: 4, marginTop: 1 }}>
-        <IconButton
-          onClick={(e) => {
-            e.stopPropagation();
-            onEdit(task);
-          }}
-          label="Edit task"
-          hoverBg="var(--incomplete-bg)"
-          hoverColor="var(--primary)"
-        >
-          ✎
-        </IconButton>
-        <IconButton onClick={handleDelete} label="Delete task" hoverBg="var(--destructive-soft)" hoverColor="var(--destructive)">
-          🗑
-        </IconButton>
+        <div style={{ display: "flex", gap: 4 }}>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(task);
+            }}
+            label="Edit task"
+            hoverBg="var(--incomplete-bg)"
+            hoverColor="var(--primary)"
+          >
+            ✎
+          </IconButton>
+          <IconButton onClick={handleDelete} label="Delete task" hoverBg="var(--destructive-soft)" hoverColor="var(--destructive)">
+            🗑
+          </IconButton>
+        </div>
       </div>
     </div>
   );

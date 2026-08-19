@@ -34,7 +34,7 @@ export function TaskDetail({ task, onBack, onToggle, onEdit, onDelete }: TaskDet
   };
 
   return (
-    <div ref={rootRef}>
+    <div ref={rootRef} style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       <button
         onClick={onBack}
         style={{
@@ -47,6 +47,7 @@ export function TaskDetail({ task, onBack, onToggle, onEdit, onDelete }: TaskDet
           cursor: "pointer",
           padding: 0,
           marginBottom: 22,
+          flexShrink: 0,
           display: "flex",
           alignItems: "center",
           gap: 6,
@@ -55,8 +56,8 @@ export function TaskDetail({ task, onBack, onToggle, onEdit, onDelete }: TaskDet
         ← Back to tasks
       </button>
 
-      <div style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "var(--radius-xl)", padding: 32 }}>
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
+      <div className="scroll-area" style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "var(--radius-xl)", padding: "clamp(20px, 5vw, 32px)" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <Checkbox checked={task.completed} onCheckedChange={() => onToggle(task.id)} size={26} style={{ marginTop: 4 }} />
             <div>
@@ -72,7 +73,7 @@ export function TaskDetail({ task, onBack, onToggle, onEdit, onDelete }: TaskDet
               >
                 {task.title}
               </h1>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 10 }}>
                 <span
                   style={{
                     background: badge.bg,

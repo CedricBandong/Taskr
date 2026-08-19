@@ -54,7 +54,9 @@ export function DialogContent({
         borderRadius: "var(--radius-xl)",
         width: 420,
         maxWidth: "90vw",
-        padding: 28,
+        maxHeight: "85vh",
+        overflowY: "auto",
+        padding: "clamp(18px, 5vw, 28px)",
         boxShadow: "var(--shadow-modal)",
         ...style,
       }}
@@ -81,7 +83,7 @@ export function DialogTitle({ children }: React.PropsWithChildren) {
 
 export function DialogFooter({ children }: React.PropsWithChildren) {
   return (
-    <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 22 }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-end", gap: 10, marginTop: 22 }}>
       {children}
     </div>
   );

@@ -139,18 +139,19 @@ export function TaskManager() {
   const selectedTask = tasks.find((t) => t.id === selectedId) ?? null;
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", background: "var(--background)", color: "var(--foreground)" }}>
+    <div className="app-shell" style={{ background: "var(--background)", color: "var(--foreground)" }}>
       <Sidebar
         counts={{ total: counts.total, active: counts.incomplete, completed: counts.completed }}
         onAddClick={openAdd}
       />
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "40px 48px", maxWidth: 920 }}>
+      <div className="main-content">
         {error && (
           <div
             role="alert"
             style={{
               display: "flex",
+              flexShrink: 0,
               alignItems: "center",
               justifyContent: "space-between",
               gap: 12,
